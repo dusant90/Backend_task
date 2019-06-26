@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cyrilic.project.restapi.Customer;
+import com.cyrilic.project.restapi.entity.Customer;
 import com.cyrilic.project.restapi.repository.CustomerRepository;
 
 @RestController
@@ -19,7 +19,7 @@ public class CustomerController {
 	private CustomerRepository customerRepository;
 	
 	@PostMapping("/create")
-	public Customer createNote(@Valid @RequestBody Customer customer) {
+	public Customer creatCustomer(@Valid @RequestBody Customer customer) {
 	    return customerRepository.save(customer);
 	}
 }

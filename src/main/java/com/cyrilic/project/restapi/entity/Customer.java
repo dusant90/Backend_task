@@ -1,4 +1,4 @@
-package com.cyrilic.project.restapi;
+package com.cyrilic.project.restapi.entity;
 
 import java.io.Serializable;
 
