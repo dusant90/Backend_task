@@ -20,40 +20,33 @@ public class Customer implements Serializable {
 	private Long id;
 	
 	@NotBlank
-	private String name;
+	private String firstName;
 	
-	private String email;
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	@NotBlank
+	private String lastName;
 
 	public Long getId() {
 		return id;
 	}
-	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public Customer(@NotBlank String name, String email) {
-		super();
-		this.name = name;
-		this.email = email;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-
-
 
 }
