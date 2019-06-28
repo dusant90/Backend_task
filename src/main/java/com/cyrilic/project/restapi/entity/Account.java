@@ -9,14 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "accounts")
@@ -27,50 +24,51 @@ public class Account implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long account_id;
 	
 	@NotNull
-	private String name;
-	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+	private String accountName;
+		
+//	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
 	private User user;
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
-	private Customer customer;
 
 	public Long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
+		return account_id;
 	}
 
 	public User getUser() {
 		return user;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setId(Long account_id) {
+		this.account_id = account_id;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+
+	public Account() {
+		super();
+	}
+	
+	public Account(@NotNull String accountName) {
+		super();
+		this.accountName = accountName;
+	}
+
+	public Account(@NotNull String name, User user) {
+		this(name);
+		this.user = user;
 	}
 }

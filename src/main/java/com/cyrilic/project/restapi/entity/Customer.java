@@ -2,10 +2,14 @@ package com.cyrilic.project.restapi.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -17,16 +21,20 @@ public class Customer implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long customer_id;
 	
 	@NotBlank
 	private String firstName;
 	
 	@NotBlank
 	private String lastName;
+	
+//	@OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+//    @JoinColumn(name = "account_id", nullable = false)
+	private Account account;
 
 	public Long getId() {
-		return id;
+		return customer_id;
 	}
 
 	public String getFirstName() {
@@ -36,9 +44,13 @@ public class Customer implements Serializable {
 	public String getLastName() {
 		return lastName;
 	}
+	
+	public Account getAccount() {
+		return account;
+	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long customer_id) {
+		this.customer_id = customer_id;
 	}
 
 	public void setFirstName(String firstName) {
@@ -47,6 +59,10 @@ public class Customer implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 }

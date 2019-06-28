@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -22,16 +22,15 @@ public class User implements Serializable{
 	private Long id;
 		
     @Column(unique = true)
-    @NotBlank
+    @NotNull
 	private String email;
 	
-    @NotBlank
+    @NotNull
 	private String password;
 
 	public Long getId() {
 		return id;
 	}
-
 
 	public String getEmail() {
 		return email;

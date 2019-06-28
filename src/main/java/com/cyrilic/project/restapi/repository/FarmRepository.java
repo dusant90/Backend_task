@@ -10,6 +10,6 @@ import com.cyrilic.project.restapi.entity.Farm;
 @Repository
 public interface FarmRepository extends JpaRepository<Farm, Long> {
 
-//	public Farm findByAccount();
-//	public List<Farm>findByUser();
+	public Farm findByAccount(String accountId);
+	public List<Farm>findByUser(String userId);
 }
