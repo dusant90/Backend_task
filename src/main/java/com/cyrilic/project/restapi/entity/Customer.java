@@ -24,26 +24,19 @@ public class Customer implements Serializable {
 	private Long customer_id;
 	
 	@NotBlank
-	private String firstName;
+	private String first_name;
 	
 	@NotBlank
-	private String lastName;
+	private String last_name;
 	
-//	@OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-//    @JoinColumn(name = "account_id", nullable = false)
+	@OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+    @JoinColumn(name = "account_id", nullable = false)
 	private Account account;
 
 	public Long getId() {
 		return customer_id;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
 	
 	public Account getAccount() {
 		return account;
@@ -53,16 +46,25 @@ public class Customer implements Serializable {
 		this.customer_id = customer_id;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+
+
+	public String getFirst_name() {
+		return first_name;
+	}
+
+	public String getLast_name() {
+		return last_name;
+	}
+
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
 }

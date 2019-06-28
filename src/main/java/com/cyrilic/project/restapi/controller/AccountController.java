@@ -23,7 +23,7 @@ public class AccountController {
 	private AccountService accountService;
 	
 	@PostMapping("/create")
-	public Account createAccount(@Valid @RequestBody Account account) {
+	public Account createAccount( @RequestBody Account account) {
 		return accountService.saveAccount(account);
 	}
 	

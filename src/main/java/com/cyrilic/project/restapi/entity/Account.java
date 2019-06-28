@@ -27,11 +27,11 @@ public class Account implements Serializable {
 	private Long account_id;
 	
 	@NotNull
-	private String accountName;
+	private String account_name;
 		
-//	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
 	private User user;
 
 	public Long getId() {
@@ -51,20 +51,20 @@ public class Account implements Serializable {
 	}
 
 	public String getAccountName() {
-		return accountName;
+		return account_name;
 	}
 
 	public void setAccountName(String accountName) {
-		this.accountName = accountName;
+		this.account_name = accountName;
 	}
 
 	public Account() {
 		super();
 	}
 	
-	public Account(@NotNull String accountName) {
+	public Account(@NotNull String account_name) {
 		super();
-		this.accountName = accountName;
+		this.account_name = account_name;
 	}
 
 	public Account(@NotNull String name, User user) {

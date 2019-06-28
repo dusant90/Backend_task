@@ -11,13 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "farms")
@@ -27,7 +24,7 @@ public class Farm implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long farm_id;
 	
 	@NotNull
 	private String name;
@@ -38,7 +35,6 @@ public class Farm implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
 	private User user;
 	
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
@@ -76,6 +72,28 @@ public class Farm implements Serializable{
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+
+	public Farm(@NotNull String name, @NotNull String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+
+
+	public Farm(@NotNull String name, @NotNull String description, User user) {
+		this(name,description);
+		this.user = user;
+	}
+
+	public Farm(@NotNull String name, @NotNull String description, Account account) {
+		this(name,description);
+		this.account = account;
+	}
+	
+	public Farm() {
+		super();
+	}
+	
 }
 
 
