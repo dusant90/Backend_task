@@ -15,16 +15,22 @@ import com.cyrilic.project.restapi.service.FarmService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/api/farm")
+@RequestMapping("/api/farms")
 public class FarmController {
 
 	@Autowired
 	private FarmService farmService;
 	
-	@ApiOperation(value = "Find all accounts by user")
+	@ApiOperation(value = "Find all farms by user")
 	@RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
 	public List<Farm>getByUserAndAccount(@PathVariable int userId, @RequestParam int accountId) {
 		return farmService.findByUserAndAccount(userId, accountId);
+	}
+	
+	@ApiOperation(value = "Lists all farms")
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public List<Farm>getAll() {
+		return farmService.getAll();
 	}
 	
 }

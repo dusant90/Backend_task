@@ -24,10 +24,4 @@ public class UserController {
 	public List<User> getAll() {
 		return userService.getAllUsers();
 	};
-
-	@ApiOperation(value = "Finds user by email")
-	@RequestMapping(value = "/{email}", method = RequestMethod.GET)
-	public User getByEmail(String email) {
-		return userService.getUserByMail(email);
-	};
 }

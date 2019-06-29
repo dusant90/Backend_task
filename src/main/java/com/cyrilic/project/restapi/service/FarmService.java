@@ -17,4 +17,9 @@ public class FarmService {
 	public List<Farm>findByUserAndAccount(int userId, int accountId) {
 		return farmRepository.findByUserAndAccount(userId, accountId);
 	}
+	
+	public List<Farm>getAll() {
+		return farmRepository.findAll();
+	}
+	
 }
