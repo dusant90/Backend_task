@@ -31,9 +31,8 @@ public class Customer implements Serializable {
 	@NotBlank
 	private String last_name;
 	
-	@OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "account_id", nullable = false)
-	@JsonIgnore 
 	private Account account;
 
 	public int getId() {

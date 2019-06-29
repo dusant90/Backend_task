@@ -17,6 +17,6 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 	
 	@Query(value = "SELECT * FROM accounts acc WHERE acc.account_id = :accountId",nativeQuery = true)
 	public Account findById (int accountId);
-//	
+	
 	public List<Account> findAll();
 }

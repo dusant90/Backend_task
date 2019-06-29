@@ -1,5 +1,7 @@
 package com.cyrilic.project.restapi.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,7 @@ public class FarmService {
 	@Autowired
 	private FarmRepository farmRepository;
 	
-	public Farm createFarm(Farm farm) {
-		return farmRepository.save(farm);
+	public List<Farm>findByUserAndAccount(int userId, int accountId) {
+		return farmRepository.findByUserAndAccount(userId, accountId);
 	}
-
 }
