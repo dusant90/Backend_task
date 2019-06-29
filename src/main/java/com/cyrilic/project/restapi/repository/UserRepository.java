@@ -7,7 +7,7 @@ import com.cyrilic.project.restapi.entity.User;
 
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
 	public User findByEmail(String mail);
 

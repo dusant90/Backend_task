@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.cyrilic.project.restapi.entity.Farm;
 
 @Repository
-public interface FarmRepository extends JpaRepository<Farm, Long> {
+public interface FarmRepository extends JpaRepository<Farm, Integer> {
 
-	public Farm findByAccount(String accountId);
-	public List<Farm>findByUser(String userId);
+	public Farm findByAccount(int accountId);
+	public List<Farm>findByUser(int userId);
 }

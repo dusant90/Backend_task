@@ -19,7 +19,7 @@ public class User implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
+	private int user_id;
 		
     @Column(unique = true)
     @NotNull
@@ -28,7 +28,7 @@ public class User implements Serializable{
     @NotNull
 	private String password;
 
-	public Long getId() {
+	public int getId() {
 		return user_id;
 	}
 
@@ -40,7 +40,7 @@ public class User implements Serializable{
 		return password;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.user_id = id;
 	}
 

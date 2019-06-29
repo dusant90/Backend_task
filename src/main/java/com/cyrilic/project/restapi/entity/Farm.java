@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "farms")
 public class Farm implements Serializable{
@@ -24,7 +26,7 @@ public class Farm implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long farm_id;
+	private int farm_id;
 	
 	@NotNull
 	private String name;
@@ -35,10 +37,12 @@ public class Farm implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore 
 	private User user;
 	
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "account_id", nullable = false)
+	@JsonIgnore 
 	private Account account;
 
 	public String getName() {

@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable {
@@ -21,7 +23,7 @@ public class Customer implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long customer_id;
+	private int customer_id;
 	
 	@NotBlank
 	private String first_name;
@@ -31,9 +33,10 @@ public class Customer implements Serializable {
 	
 	@OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "account_id", nullable = false)
+	@JsonIgnore 
 	private Account account;
 
-	public Long getId() {
+	public int getId() {
 		return customer_id;
 	}
 
@@ -42,7 +45,7 @@ public class Customer implements Serializable {
 		return account;
 	}
 
-	public void setId(Long customer_id) {
+	public void setId(int customer_id) {
 		this.customer_id = customer_id;
 	}
 

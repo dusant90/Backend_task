@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "accounts")
 public class Account implements Serializable {
@@ -24,7 +26,7 @@ public class Account implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long account_id;
+	private int account_id;
 	
 	@NotNull
 	private String account_name;
@@ -32,9 +34,10 @@ public class Account implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore 
 	private User user;
 
-	public Long getId() {
+	public int getId() {
 		return account_id;
 	}
 
@@ -42,7 +45,7 @@ public class Account implements Serializable {
 		return user;
 	}
 
-	public void setId(Long account_id) {
+	public void setId(int account_id) {
 		this.account_id = account_id;
 	}
 
