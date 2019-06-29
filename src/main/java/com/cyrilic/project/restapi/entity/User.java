@@ -10,15 +10,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.annotations.ApiModelProperty;
+
 
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties({"user_id","id","password"})
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@ApiModelProperty(readOnly = true)
 	private int user_id;
 		
     @Column(unique = true)

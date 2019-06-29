@@ -14,6 +14,13 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+	public User createUser(String email, String password) {
+		User user = new User();
+		user.setEmail(email);
+		user.setPassword(password);
+		return userRepository.save(user);
+	}
+	
 	public User getUserByMail(String mail) {
 		return userRepository.findByEmail(mail);
 	}
