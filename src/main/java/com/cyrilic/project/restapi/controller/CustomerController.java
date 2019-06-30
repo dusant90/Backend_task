@@ -11,6 +11,7 @@ import com.cyrilic.project.restapi.entity.Customer;
 import com.cyrilic.project.restapi.service.CustomerService;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -19,7 +20,7 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@ApiOperation(value = "Lists all customers")
+	@ApiOperation(value = "Lists all customers",authorizations = { @Authorization(value = "apiKey") })
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<Customer> getAll() {
 		return customerService.getAll();
