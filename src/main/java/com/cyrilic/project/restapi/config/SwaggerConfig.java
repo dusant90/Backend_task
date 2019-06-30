@@ -17,8 +17,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * Enables Swagger documentation generation.
  * 
- * JSON documentation: http://localhost:8090/v2/api-docs UI is available under:
- * http://localhost:8090/swagger-ui.html Annotation types:
+ * JSON documentation: http://localhost:8080/v2/api-docs UI is available under:
+ * http://localhost:8080/swagger-ui.html Annotation types:
  */
 @Configuration
 @EnableSwagger2
@@ -31,7 +31,7 @@ public class SwaggerConfig {
 			.paths(PathSelectors.any())
 			.build()
 			.apiInfo(apiInfo())
-        .securitySchemes(Arrays.asList(apiKey()));
+	        .securitySchemes(Arrays.asList(apiKey()));
 
 	}
 
@@ -39,8 +39,6 @@ public class SwaggerConfig {
 		return new ApiInfoBuilder()
 			.title("REST Api Example")
 			.description("Provides documentation for API methods")
-			.license("GPL-2.0")
-			.licenseUrl("https://github.com/uzh/marugoto/blob/master/LICENSE")
 			.version("1.0")
 			.build();
 	}
