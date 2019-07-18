@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		var applicationUser = this.getUserByMail(username);
+		User applicationUser = this.getUserByMail(username);
 		if (applicationUser == null)
 			throw new UsernameNotFoundException(username);
 

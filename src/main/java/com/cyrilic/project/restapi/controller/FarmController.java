@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cyrilic.project.restapi.entity.Farm;
 import com.cyrilic.project.restapi.service.FarmService;
-
 import io.swagger.annotations.ApiOperation;
 
 @RestController
@@ -32,5 +31,4 @@ public class FarmController {
 	public List<Farm>getAll() {
 		return farmService.getAll();
 	}
-	
 }
